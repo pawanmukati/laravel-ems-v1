@@ -35,7 +35,7 @@ class HomeController extends Controller
     public function adminHome()
     {
         // return view('admin.list');
-        return redirect()->route('employees.index');
+        return redirect()->route('employees.profile');
     }
 
     /**

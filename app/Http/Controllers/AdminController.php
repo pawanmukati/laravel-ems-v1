@@ -68,7 +68,7 @@ class AdminController extends Controller
         return view('admin.edit_employee',['employee'=>$employee]);
     }
 
-    public function update($id ,Request $request){
+    public function employeeUpdate($id ,Request $request){
 
         $validator = Validator::make($request->all(), [
             'name'=>'required',

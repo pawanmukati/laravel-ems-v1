@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeLeaveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,12 +68,26 @@ Route::get('/employee', [AdminController::class, 'index'])->name('employees.inde
 Route::get('/employee/create', [AdminController::class, 'create'])->name('employees.create');
 Route::post('/employees', [AdminController::class, 'store'])->name('employees.store');
 Route::get('/employees/{employee}/edit', [AdminController::class, 'edit'])->name('employees.edit');
-Route::put('/employees/{employee}', [AdminController::class, 'update'])->name('employees.update');
+Route::put('/employees/{employee}/updateEmployee', [AdminController::class, 'employeeUpdate'])->name('employees.update');
 Route::delete('/employees/{employee}', [AdminController::class, 'destroy'])->name('employees.destroy');
 // End ---
 
 // Employee Route ---
 
-// Route::get('/employee/profile', [AdminController::class, 'profile'])->name('employees.profile');
+Route::get('/employee/profile', [EmployeeController::class, 'profile'])->name('employees.profile');
+Route::get('/employee/{employee}/edit', [EmployeeController::class, 'editProfile'])->name('employees.editProfile');
+Route::put('/employees/{employee}/profile', [EmployeeController::class, 'updateprofile'])->name('employees.updateprofile');
 
 // End ---
+
+// leave applying Route --
+Route::get('/employee/leave', [EmployeeLeaveController::class, 'leave'])->name('employees.leave');
+Route::get('/employee/applyleave', [EmployeeLeaveController::class, 'applyleave'])->name('employees.applyleave');
+Route::post('/employees/leave', [EmployeeLeaveController::class, 'leaveStore'])->name('leave.store');
+// End --
+
+// leave update routes --
+Route::get('/leaveUpdate', [EmployeeLeaveController::class, 'leaveUpdate'])->name('employees.leaveUpdate');
+Route::put('leaveUpdateStatus/{leave}/update', [EmployeeLeaveController::class, 'leaveUpdateStatus'])->name('employees.leaveUpdateStatus');
+
+// End --

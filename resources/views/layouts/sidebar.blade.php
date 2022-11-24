@@ -684,15 +684,16 @@
                                  {{-- {{ auth()->user()->type}} --}}
                             {{-- // @endphp --}}
                             @if (auth()->user()->type == 'Admin')
+                            <li><a class="p-1" href="{{ route('employees.profile') }}">My Profile</a></li>
                             <li><a class="p-1" href="{{ route('employees.index') }}">Employees</a></li>
-                            <li><a class="p-1" href="">Employee Leaves</a></li>
+                            <li><a class="p-1" href="{{ route('employees.leaveUpdate') }}">Employee Leaves</a></li>
                           @elseif (auth()->user()->type == 'Subadmin')
+                          <li><a class="p-1" href="{{ route('employees.profile') }}">My Profile</a></li>
                           <li><a class="p-1" href="{{ route('employees.index') }}">Employees</a></li>
-                          <li><a class="p-1" href="">Employee Leaves</a></li>
+                          <li><a class="p-1" href="{{ route('employees.leaveUpdate') }}">Employee Leaves</a></li>
                           @elseif (auth()->user()->type == 'Employee')
-                            <li><a class="p-1" href="">Tables</a></li>
-                            <li><a class="p-1" href="">Tables</a></li>
-                            <li><a class="p-1" href="">Tables</a></li>
+                            <li><a class="p-1" href="{{ route('employees.profile') }}">My Profile</a></li>
+                            <li><a class="p-1" href="{{ route('employees.leave') }}">My leave</a></li>
                         @endif
                         </ul>
                     </div>
